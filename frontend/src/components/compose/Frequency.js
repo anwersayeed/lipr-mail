@@ -41,29 +41,20 @@ export default function DialogSelect() {
 
   return (
     <div>
-      <Button onClick={handleClickOpen} style={{backgroundColor : "#008CBA"}} >Mail Frequency</Button>
-      <Dialog disableBackdropClick disableEscapeKeyDown open={open} onClose={handleClose}>
+      <Button onClick={handleClickOpen} style={{ backgroundColor: '#008CBA' }}>
+        Mail Frequency
+      </Button>
+      <Dialog
+        disableBackdropClick
+        disableEscapeKeyDown
+        open={open}
+        onClose={handleClose}
+      >
         <DialogTitle>Fill the form</DialogTitle>
         <DialogContent>
           <form className={classes.container}>
             <FormControl className={classes.formControl}>
               <InputLabel id="demo-dialog-select-label">Freq</InputLabel>
-              <Select
-                labelId="demo-dialog-select-label"
-                id="demo-dialog-select"
-                value={age}
-                onChange={handleChange}
-                input={<Input />}
-              >
-                <MenuItem value="">
-                  <em>None</em>
-                </MenuItem>
-                <MenuItem value={20}>Twenty sec</MenuItem>
-                <MenuItem value={30}>Thirty sec</MenuItem>
-                <MenuItem value={7}>Weekly</MenuItem>
-                <MenuItem value={30}>Monthly</MenuItem>
-                <MenuItem value={365}>Yearly</MenuItem>
-              </Select>
             </FormControl>
           </form>
         </DialogContent>

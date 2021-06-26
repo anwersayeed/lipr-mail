@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Mail from '../Mails/mail.component';
 import Header from '../header/header.component';
+import Compose from '../compose/Compose';
 
 import { makeStyles } from '@material-ui/core/styles';
 import {
@@ -53,6 +54,10 @@ const useStyles = makeStyles((theme) => ({
 export default function ClippedDrawer() {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = useState(null);
+  const [composeComponent, setComposeComponent] = useState(false);
+  const [scheduleComponent, setScheduleComponent] = useState(false);
+  const [sentComponent, setSentComponent] = useState(false);
+
   const name = 'Ayush';
   const greeting = `Hello ${name}`;
 
@@ -84,7 +89,11 @@ export default function ClippedDrawer() {
         <Toolbar />
         <div className={classes.drawerContainer}>
           <List>
-            <ListItem button key={greeting}>
+            <ListItem
+              button
+              key={greeting}
+              onClick={(event) => console.log(event.target)}
+            >
               <ListItemIcon>
                 <PersonIcon />
               </ListItemIcon>
@@ -92,25 +101,37 @@ export default function ClippedDrawer() {
             </ListItem>
           </List>
           <List>
-            <ListItem button key="Compose">
+            <ListItem
+              button
+              key="Compose"
+              onClick={() => setComposeComponent(!composeComponent)}
+            >
               <ListItemIcon>
                 <AddCircleIcon />
               </ListItemIcon>
               <ListItemText primary="Compose" />
             </ListItem>
-            <ListItem button key="Schedule Mail">
+            <ListItem
+              button
+              key="Schedule Mail"
+              onClick={(event) => console.log(event)}
+            >
               <ListItemIcon>
                 <ScheduleIcon />
               </ListItemIcon>
               <ListItemText primary="Schedule Mail" />
             </ListItem>
-            <ListItem button key="SENT">
+            <ListItem button key="SENT" onClick={(event) => console.log(event)}>
               <ListItemIcon>
                 <InboxIcon />
               </ListItemIcon>
               <ListItemText primary="SENT" />
             </ListItem>
-            <ListItem button key="LOGOUT">
+            <ListItem
+              button
+              key="LOGOUT"
+              onClick={(event) => console.log(event)}
+            >
               <ListItemIcon>
                 <ExitToAppIcon />
               </ListItemIcon>
@@ -122,9 +143,7 @@ export default function ClippedDrawer() {
       </Drawer>
       <main className={classes.content}>
         <Toolbar />
-        <Mail />
-        <Mail />
-        <Mail />
+        {composeComponent ? <Mail /> : null}
       </main>
     </div>
   );

@@ -4,7 +4,6 @@ import Drawer from './components/drawer/drawer.component';
 import HomePage from './Pages/homepage/homepage';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import Compose from './components/compose/Compose';
-import NewCompose from './components/compose/NewCompose'
 
 function App() {
   return (
@@ -17,10 +16,8 @@ function App() {
         <Route exact path="/checkout" component={History} /> */}
       {/* </Switch> */}
 
-
       {/* Testing */}
       <Route exact path="/c" component={Compose} />
-      <Route exact path="/nc" component={NewCompose} />
     </div>
   );
 }

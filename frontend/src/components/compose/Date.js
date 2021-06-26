@@ -18,7 +18,7 @@ export default function DateAndTimePickers() {
   const classes = useStyles();
 
   return (
-    <form className={classes.container} noValidate>
+    <>
       <TextField
         id="datetime-local"
         label="Staring Mail Schedule"
@@ -29,6 +29,6 @@ export default function DateAndTimePickers() {
           shrink: true,
         }}
       />
-    </form>
+    </>
   );
 }

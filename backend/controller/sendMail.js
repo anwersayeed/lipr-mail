@@ -1,11 +1,10 @@
 const nodemailer = require("nodemailer");
 
 var smtpTransport = nodemailer.createTransport({
-  host: "smtp.ethereal.email",
-  port: 587,
+  service: "gmail",
   auth: {
-    user: "rubye32@ethereal.email",
-    pass: "GrMGueXp5upEJCPv9p",
+    user: "fcukgod69@gmail.com",
+    pass: "zxcvbnmqwer456@",
   },
 });
 
@@ -22,7 +21,7 @@ module.exports.sendResetEmail = async (email, token) => {
   var url = "http://localhost:8000/user/reset-password?token=" + token;
 
   await smtpTransport.sendMail({
-    from: "rubye32@ethereal.email",
+    from: "fcukgod69@gmail.com",
     to: email,
     subject: "RESET YOUR PASSWORD",
     text: `Click on this link to reset your password ${url}`,
@@ -35,7 +34,7 @@ module.exports.sendVerifyEmail = async (email, token) => {
   var url = "http://localhost:8000/user/verifyemail?token=" + token;
 
   await smtpTransport.sendMail({
-    from: "rubye32@ethereal.email",
+    from: "fcukgod69@gmail.com",
     to: email,
     subject: "VERIFY Your EMAIL",
     text: `Click on this link to verify ${url}`,

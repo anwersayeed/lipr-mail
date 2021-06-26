@@ -34,6 +34,7 @@ router.get('/user/send-verification-email', checkAuth, async (req, res) => {
         // send an email for verification
         mailer.sendVerifyEmail(req.user.email, token);
         res.render('profile', { username: req.user.username, verified: req.user.isVerified, emailsent: true });
+        console.log('email sent')
     }
 });
 

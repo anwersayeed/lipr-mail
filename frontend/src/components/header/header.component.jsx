@@ -5,8 +5,16 @@ import {
   Grid,
   createMuiTheme,
   ThemeProvider,
+  Link,
 } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
 import SearchIcon from '@material-ui/icons/Search';
+
+const useStyles = makeStyles((theme) => ({
+  appBar: {
+    zIndex: theme.zIndex.drawer + 1,
+  },
+}));
 
 const theme = createMuiTheme({
   palette: {
@@ -19,12 +27,14 @@ const theme = createMuiTheme({
   },
 });
 
-function Navbar() {
+function Header() {
+  const classes = useStyles();
   const navBar = {
     paddingLeft: '55px',
     paddingRight: '55px',
-    backgroundColor: 'white',
+    backgroundColor: 'lightBlue',
     height: '81px',
+    width: '100%',
   };
 
   const responsiveImg = {
@@ -33,53 +43,60 @@ function Navbar() {
     height: 'auto',
   };
 
+  const preventDefault = (event) => event.preventDefault();
+
   return (
     <>
-      <div className="row" style={navBar}>
-        <Grid container alignItems="center">
-          <Grid item lg={3} md={3}>
-            <Box display="flex" justifyContent="center">
-              <img
-                src="https://clipartcraft.com/images/email-logo-png-us-4.png"
-                alt="mailLogo"
-                style={responsiveImg}
-              ></img>
-            </Box>
+      <Box position="fixed" className={classes.appBar}>
+        <div className="row" style={navBar}>
+          <Grid container alignItems="center">
+            <Grid item lg={3} md={3}>
+              <Box display="flex" justifyContent="center">
+                <img
+                  src="https://clipartcraft.com/images/email-logo-png-us-4.png"
+                  alt="mailLogo"
+                  style={responsiveImg}
+                ></img>
+              </Box>
+            </Grid>
+            <Grid item lg={6} md={6}>
+              <Box display="flex" justifyContent="center">
+                <Box component="span" px={4}>
+                  <Link href="#" onClick={preventDefault}>
+                    Home
+                  </Link>
+                </Box>
+                <Box component="span" px={4}>
+                  <Link href="#" onClick={preventDefault}>
+                    About Us
+                  </Link>
+                </Box>
+                <Box component="span" px={4}>
+                  <Link href="#" onClick={preventDefault}>
+                    Products
+                  </Link>
+                </Box>
+              </Box>
+            </Grid>
+            <Grid item lg={3} md={3}>
+              <Box display="flex" justifyContent="center">
+                <Box component="span" px={2} pt={0.58}>
+                  <SearchIcon />
+                </Box>
+                <Box component="span" px={2}>
+                  <ThemeProvider theme={theme}>
+                    <Button variant="outlined" color="primary">
+                      Login
+                    </Button>
+                  </ThemeProvider>
+                </Box>
+              </Box>
+            </Grid>
           </Grid>
-          <Grid item lg={6} md={6}>
-            <Box display="flex" justifyContent="center">
-              <Box component="span" px={2}>
-                Home
-              </Box>
-              <Box component="span" px={2}>
-                About Us
-              </Box>
-              <Box component="span" px={2}>
-                Products
-              </Box>
-              <Box component="span" px={2}>
-                Contact Us
-              </Box>
-            </Box>
-          </Grid>
-          <Grid item lg={3} md={3}>
-            <Box display="flex" justifyContent="center">
-              <Box component="span" px={2} pt={0.58}>
-                <SearchIcon />
-              </Box>
-              <Box component="span" px={2}>
-                <ThemeProvider theme={theme}>
-                  <Button variant="outlined" color="primary">
-                    Login
-                  </Button>
-                </ThemeProvider>
-              </Box>
-            </Box>
-          </Grid>
-        </Grid>
-      </div>
+        </div>
+      </Box>
     </>
   );
 }
 
-export default Navbar;
+export default Header;
